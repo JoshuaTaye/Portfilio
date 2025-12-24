@@ -3,19 +3,69 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-light: #ffffff;
+  --foreground-light: #171717;
+  --background-dark: #0a0a0a;
+  --foreground-dark: #ededed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body, .dark body {
+  transition: background 5s ease-in-out, color 5s ease-in-out;
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+}
+
+.dark body {
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Magnita", serif;
+}
+
+
+.b-container {
+  width: 90%;
+}
+
+@media screen and (min-width: 576px) {
+  .b-container {
+    width: 540px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .b-container {
+    width: 720px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .b-container {
+    width: 960px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .b-container {
+    width: 1140px;
+  }
+}
+.rotate-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 10rem;
+  font-weight: bold;
+  opacity: 0.5;
+  pointer-events: none;
+}
+@keyframes continuousScroll {
+  0% {
+    transform: rotate(180deg) translateY(-100%);
+  }
+  100% {
+    transform: rotate(180deg) translateY(100%);
+  }
+}
+
+.animate-rotate-text {
+  animation: continuousScroll 7s linear infinite; /* Adjust duration as needed */
 }
